@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imc_app/config/theme/app_theme.dart';
+import 'package:imc_app/presentation/screens/imc_home.dart';
 
 void main() {
   runApp(const MainApp());
@@ -21,9 +22,7 @@ class MainApp extends StatelessWidget {
           title: const Text('IMC Calculator'),
         ),
 
-        body: const Center(
-          child: Text('Hello World!'),
-        ),
+        body: const ImcHomeScreen(),
       ),
     );
   }
