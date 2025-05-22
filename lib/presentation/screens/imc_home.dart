@@ -11,26 +11,60 @@ class ImcHomeScreen extends StatefulWidget {
 }
 
 class _ImcHomeScreenState extends State<ImcHomeScreen> {
+
+  int selectEdad = 15;
+  int selectPeso = 50;
+
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children:const <Widget> [
-        GenderSelector(),
-        HeightSelector(),
+      children: <Widget> [
+
+        // Clases:
+        const GenderSelector(),
+        const HeightSelector(),
 
         Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Row(
             children: <Widget> [
           
               Expanded(
-                child: NumberSelector(title: 'PESO')
+                child: NumberSelector(
+                  title: 'PESO', 
+                  value: selectPeso, 
+                  onDecrement: () {
+                    setState(() {
+                      if(selectPeso == 0)return;
+                        selectPeso--;
+                    });
+                  },
+                  onIncrement: () {
+                    setState(() {
+                      selectPeso++;
+                    });
+                  },
+                )
               ),
           
-              SizedBox(width: 16,),
+              const SizedBox(width: 16,),
               
               Expanded(
-                child: NumberSelector(title: 'EDAD')
+                child: NumberSelector(
+                  title: 'EDAD', 
+                  value: selectEdad, 
+                  onDecrement: () {
+                    setState(() {
+                      if(selectEdad == 0) return;
+                        selectEdad--;
+                    });
+                  },
+                  onIncrement: () {
+                    setState(() {
+                      selectEdad++;
+                    });
+                  },
+                )
               ),
             
             ],

@@ -4,10 +4,16 @@ import 'package:imc_app/config/theme/text_style.dart';
 
 class NumberSelector extends StatefulWidget {
   final String title;
+  final int value;
+  final Function() onIncrement;
+  final Function() onDecrement;
 
   const NumberSelector({
     super.key, 
-    required this.title
+    required this.title, 
+    required this.onIncrement, 
+    required this.value, 
+    required this.onDecrement
   });
 
   @override
@@ -29,9 +35,9 @@ class _NumberSelectorState extends State<NumberSelector> {
           
           children: [
             Text(widget.title, style: ClaseTextStyles.bodyText,),
-            const Text(
-              '30',
-              style: TextStyle(
+            Text(
+              widget.value.toString(),
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 35,
                 fontWeight: FontWeight.bold
@@ -41,8 +47,11 @@ class _NumberSelectorState extends State<NumberSelector> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Boton para disminuir
                 FloatingActionButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    widget.onDecrement();
+                  },
                   shape: const CircleBorder(),
                   backgroundColor: ThemeColor.primary,
                   child: const Icon(Icons.remove, color: Colors.white,),
@@ -51,8 +60,11 @@ class _NumberSelectorState extends State<NumberSelector> {
 
                 const SizedBox(width: 16,),
         
+                // Boton para aumentar
                 FloatingActionButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    widget.onIncrement();
+                  },
                   shape: const CircleBorder(),
                   backgroundColor: ThemeColor.primary,
                   child: const Icon(Icons.add, color: Colors.white,),
