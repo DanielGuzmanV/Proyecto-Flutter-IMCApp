@@ -8,4 +8,10 @@ class ClaseTextStyles {
     fontWeight: FontWeight.w300
   );
 
+  static const TextStyle textTitle = TextStyle(
+    fontSize: 38,
+    color: Colors.white,
+    fontWeight: FontWeight.bold
+  );
+
 }
