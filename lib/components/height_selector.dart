@@ -23,6 +23,7 @@ class _HeightSelectorState extends State<HeightSelector> {
         ),
         child: Column(
           children: [
+            const SizedBox(height: 10,),
             const Text(
               'ALTURA',
               style: ClaseTextStyles.bodyText,
