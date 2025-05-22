@@ -41,8 +41,7 @@ class ImcResultScreen extends StatelessWidget {
     // Calculos:
     double fixedAltura = valueAltura / 100;
     double imcResultado = valuePeso / (fixedAltura * fixedAltura);
-
-    // =======================================
+    // ===========================================================
 
     return Padding(
       padding: const EdgeInsets.all(16),
@@ -69,6 +68,7 @@ class ImcResultScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+
                     // Titulo:
                     const Text(
                       'Normal', 
@@ -121,6 +121,9 @@ class ImcResultScreen extends StatelessWidget {
               child: const Text('Finalizar', style: ClaseTextStyles.bodyText)
             ),
           ),
+          // ====================================================================
+
+
         ],
       ),
     );
