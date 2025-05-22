@@ -4,6 +4,7 @@ import 'package:imc_app/components/height_selector.dart';
 import 'package:imc_app/components/number_selector.dart';
 import 'package:imc_app/config/theme/app_theme.dart';
 import 'package:imc_app/config/theme/text_style.dart';
+import 'package:imc_app/presentation/screens/imc_result.dart';
 
 class ImcHomeScreen extends StatefulWidget {
   const ImcHomeScreen({super.key});
@@ -91,8 +92,13 @@ class _ImcHomeScreenState extends State<ImcHomeScreen> {
             height: 60,
             width: double.infinity,
 
+            // Navegacion a otra pantalla:
             child: ElevatedButton(
-              onPressed: () {}, 
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => ImcResultScreen(valuePeso: selectPeso,valueAltura: selectAltura)
+                ));
+              }, 
               style: ButtonStyle(
                 shape: WidgetStateProperty.all(
                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
