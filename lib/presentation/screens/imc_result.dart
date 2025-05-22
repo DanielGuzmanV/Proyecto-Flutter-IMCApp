@@ -20,10 +20,10 @@ class ImcResultScreen extends StatelessWidget {
       backgroundColor: ThemeColor.background,
 
       appBar: appResult(),
-
       body: bodyResult(),
     );
   }
+  //  ============================================
 
   // Funcion para el appBar:
   AppBar appResult() {
@@ -33,19 +33,27 @@ class ImcResultScreen extends StatelessWidget {
       foregroundColor: Colors.white,
     );
   }
+  //  ============================================
 
   // Funcion para el body:
   Padding bodyResult() {
+
+    // Calculos:
+    double fixedAltura = valueAltura / 100;
+    double imcResultado = valuePeso / (fixedAltura * fixedAltura);
+
+    // =======================================
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: [
-          // Title:
+          // -- Title --:
           const Text('Tu resultado: ', style: ClaseTextStyles.textTitle,),
 
-          // Body
+          // -- Body --:
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 32),
@@ -59,9 +67,38 @@ class ImcResultScreen extends StatelessWidget {
               
                 // Values body:
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Text(valuePeso.toString(), style: ClaseTextStyles.bodyText,),
-                    Text(valueAltura.toString(), style: ClaseTextStyles.bodyText,),
+                    // Titulo:
+                    const Text(
+                      'Normal', 
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white
+                      ),
+                    ),
+
+                    // Resultado de altura y peso:
+                    Text(
+                      imcResultado.toStringAsFixed(2), 
+                      style: const TextStyle(
+                        fontSize: 76,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+
+                    // Descripcion:
+                    const Text(
+                      'Descripcion:', 
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white
+                      ),
+                    ),
+
                   ],
                 ),
               
@@ -69,7 +106,7 @@ class ImcResultScreen extends StatelessWidget {
             )
           ),
 
-          // Boton para finalizar:
+          // -- Boton para finalizar --:
           SizedBox(
             height: 60,
             width: double.infinity,
@@ -88,6 +125,7 @@ class ImcResultScreen extends StatelessWidget {
       ),
     );
   }
+  // ====================================================
 
 }
 
