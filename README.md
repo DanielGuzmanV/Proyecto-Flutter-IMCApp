@@ -8,17 +8,11 @@ Proyecto realizado por: `AristiDevs`
 
 ## Images del proyecto
 
-<img 
-  src="lib/img_readme/img_main.jpg" 
-  alt="Pantalla del main principal" 
-  width="300"
-/>
+## Imágenes del proyecto
 
-<img 
-  src="lib/img_readme/img_result.jpg" 
-  alt="Pantalla del resultado" 
-  width="300"
-/>
+| Pantalla principal | Pantalla de resultado |
+|--------------------|----------------------|
+| <img src="lib/img_readme/img_main.jpg" alt="Pantalla del main principal" width="200"/> | <img src="lib/img_readme/img_result.jpg" alt="Pantalla del resultado" width="200"/> |
 
 
 
