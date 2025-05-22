@@ -16,6 +16,7 @@ class _ImcHomeScreenState extends State<ImcHomeScreen> {
 
   int selectEdad = 15;
   int selectPeso = 50;
+  double selectAltura = 150;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,13 @@ class _ImcHomeScreenState extends State<ImcHomeScreen> {
 
         // Clases:
         const GenderSelector(),
-        const HeightSelector(),
+        HeightSelector(
+          alturaUser: selectAltura, 
+          fnOnChanged: (double value) {
+            setState(() {
+              selectAltura = value;
+            });
+          },),
 
         // widgets de edad y peso:
         Padding(
