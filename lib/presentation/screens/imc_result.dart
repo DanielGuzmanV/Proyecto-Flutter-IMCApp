@@ -20,7 +20,7 @@ class ImcResultScreen extends StatelessWidget {
       backgroundColor: ThemeColor.background,
 
       appBar: appResult(),
-      body: bodyResult(),
+      body: bodyResult(context),
     );
   }
   //  ============================================
@@ -36,7 +36,7 @@ class ImcResultScreen extends StatelessWidget {
   //  ============================================
 
   // Funcion para el body:
-  Padding bodyResult() {
+  Padding bodyResult(BuildContext context) {
 
     // Calculos:
     double fixedAltura = valueAltura / 100;
@@ -70,12 +70,12 @@ class ImcResultScreen extends StatelessWidget {
                   children: [
 
                     // Titulo:
-                    const Text(
-                      'Normal', 
+                    Text(
+                      getTitleByImc(imcResultado), 
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white
+                        color: getColorByImc(imcResultado)
                       ),
                     ),
 
@@ -90,12 +90,17 @@ class ImcResultScreen extends StatelessWidget {
                     ),
 
                     // Descripcion:
-                    const Text(
-                      'Descripcion:', 
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white
+                    Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(
+                        getByDescription(imcResultado), 
+                        style: const TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
+
+                        textAlign: TextAlign.center,
                       ),
                     ),
 
@@ -111,7 +116,9 @@ class ImcResultScreen extends StatelessWidget {
             height: 60,
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: (){}, 
+              onPressed: (){
+                Navigator.pop(context);
+              }, 
               style: ButtonStyle(
                 shape: WidgetStateProperty.all(
                   RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -128,7 +135,37 @@ class ImcResultScreen extends StatelessWidget {
       ),
     );
   }
+  
+  // Metodo para el color del titulo:
+  Color getColorByImc(double imcResultado) {
+    return switch (imcResultado) {
+      < 18.5 => Colors.blue,
+      < 24.9 => Colors.green,
+      < 29.99 => Colors.orange,
+      _ => Colors.red,
+    };
+  }
   // ====================================================
+
+  // Metodo para cambiar el titulo:
+  String getTitleByImc(double imcResultado) {
+    return switch (imcResultado) {
+      < 18.5 => 'Imc Bajo',
+      < 24.9 => 'Imc Normal',
+      < 29.99 => 'Sobrepeso',
+      _ => 'Obesidad',
+    };
+  }
+
+  // Metodo para cambiar la descripcion:
+  String getByDescription(double imcResultado) {
+    return switch (imcResultado) {
+      < 18.5 => 'Peso por debajo de lo normal',
+      < 24.9 => 'Peso en el rango saludable',
+      < 29.99 => 'Sobrepeso, cuida tu alimentacion',
+      _ => 'Obesidad, consulta con un especialista',
+    };
+  }
 
 }
 
