@@ -6,8 +6,6 @@ Proyecto realizado por: `AristiDevs`
 
 - [Video iniciando el proyecto:](https://youtu.be/IKG1eV2SetA?si=q9lXpfLUgGngh7R_&t=16716)
 
-## Images del proyecto
-
 ## Imágenes del proyecto
 
 | Pantalla principal | Pantalla de resultado |
